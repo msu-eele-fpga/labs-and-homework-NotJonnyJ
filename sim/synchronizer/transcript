@@ -1,0 +1,333 @@
+vsim work.synchronizer_tb
+# vsim work.synchronizer_tb 
+# Start time: 16:36:32 on Sep 04,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading work.synchronizer_tb(testbench)#1
+# ** Warning: (vsim-3473) Component instance "dut : synchronizer" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+add wave -position insertpoint  \
+sim:/synchronizer_tb/sync_tb
+add wave -position insertpoint  \
+sim:/synchronizer_tb/sync_expected
+add wave -position insertpoint  \
+sim:/synchronizer_tb/clk_tb
+add wave -position insertpoint  \
+sim:/synchronizer_tb/CLK_PERIOD
+add wave -position insertpoint  \
+sim:/synchronizer_tb/async_tb
+run
+# ** Warning: Error for clock cycle 0:
+# sync = 0 sync_expected  = U
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 1:
+# sync = 0 sync_expected  = U
+#    Time: 10 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 4:
+# sync = 0 sync_expected  = 1
+#    Time: 40 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 5:
+# sync = 0 sync_expected  = 1
+#    Time: 50 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 6:
+# sync = 0 sync_expected  = 1
+#    Time: 60 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Failure: tests failed!
+#    Time: 100 ns  Iteration: 0  Process: /synchronizer_tb/check_output File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+# Break in Process check_output at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd line 105
+quit -sim
+# End time: 16:38:31 on Sep 04,2024, Elapsed time: 0:01:59
+# Errors: 1, Warnings: 7
+vsim work.synchronizer_tb(testbench)
+# vsim work.synchronizer_tb(testbench) 
+# Start time: 16:39:07 on Sep 04,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading work.synchronizer_tb(testbench)#1
+# ** Warning: (vsim-3473) Component instance "dut : synchronizer" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+add wave -position insertpoint  \
+sim:/synchronizer_tb/sync_tb \
+sim:/synchronizer_tb/sync_expected \
+sim:/synchronizer_tb/clk_tb \
+sim:/synchronizer_tb/CLK_PERIOD \
+sim:/synchronizer_tb/async_tb
+run
+# ** Warning: Error for clock cycle 0:
+# sync = 0 sync_expected  = U
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 1:
+# sync = 0 sync_expected  = U
+#    Time: 10 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 4:
+# sync = 0 sync_expected  = 1
+#    Time: 40 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 5:
+# sync = 0 sync_expected  = 1
+#    Time: 50 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 6:
+# sync = 0 sync_expected  = 1
+#    Time: 60 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Failure: tests failed!
+#    Time: 100 ns  Iteration: 0  Process: /synchronizer_tb/check_output File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+# Break in Process check_output at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd line 105
+quit -sim
+# End time: 16:40:51 on Sep 04,2024, Elapsed time: 0:01:44
+# Errors: 1, Warnings: 7
+vsim work.synchronizer_tb(testbench)
+# vsim work.synchronizer_tb(testbench) 
+# Start time: 16:40:57 on Sep 04,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading work.synchronizer_tb(testbench)#1
+# ** Warning: (vsim-3473) Component instance "dut : synchronizer" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+add wave sim:/synchronizer_tb/*
+add wave -r /*
+run
+# ** Warning: Error for clock cycle 0:
+# sync = 0 sync_expected  = U
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 1:
+# sync = 0 sync_expected  = U
+#    Time: 10 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 4:
+# sync = 0 sync_expected  = 1
+#    Time: 40 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 5:
+# sync = 0 sync_expected  = 1
+#    Time: 50 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 6:
+# sync = 0 sync_expected  = 1
+#    Time: 60 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Failure: tests failed!
+#    Time: 100 ns  Iteration: 0  Process: /synchronizer_tb/check_output File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+# Break in Process check_output at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd line 105
+quit -sim
+# End time: 16:42:47 on Sep 04,2024, Elapsed time: 0:01:50
+# Errors: 1, Warnings: 7
+# Compile of synchronizer.vhd was successful.
+vsim work.synchronizer_tb(testbench)
+# vsim work.synchronizer_tb(testbench) 
+# Start time: 16:45:17 on Sep 04,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading work.synchronizer_tb(testbench)#1
+# ** Warning: (vsim-3473) Component instance "dut : synchronizer" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+add wave -r /*
+run
+# ** Warning: Error for clock cycle 0:
+# sync = 0 sync_expected  = U
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 1:
+# sync = 0 sync_expected  = U
+#    Time: 10 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 4:
+# sync = 0 sync_expected  = 1
+#    Time: 40 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 5:
+# sync = 0 sync_expected  = 1
+#    Time: 50 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 6:
+# sync = 0 sync_expected  = 1
+#    Time: 60 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Failure: tests failed!
+#    Time: 100 ns  Iteration: 0  Process: /synchronizer_tb/check_output File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+# Break in Process check_output at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd line 105
+quit -sim
+# End time: 16:47:07 on Sep 04,2024, Elapsed time: 0:01:50
+# Errors: 1, Warnings: 8
+vsim work.synchronizer_tb
+# vsim work.synchronizer_tb 
+# Start time: 16:49:22 on Sep 04,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading work.synchronizer_tb(testbench)#1
+# ** Warning: (vsim-3473) Component instance "dut : synchronizer" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+add wave -r /*
+run
+# ** Warning: Error for clock cycle 0:
+# sync = 0 sync_expected  = U
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 1:
+# sync = 0 sync_expected  = U
+#    Time: 10 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 4:
+# sync = 0 sync_expected  = 1
+#    Time: 40 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 5:
+# sync = 0 sync_expected  = 1
+#    Time: 50 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 6:
+# sync = 0 sync_expected  = 1
+#    Time: 60 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Failure: tests failed!
+#    Time: 100 ns  Iteration: 0  Process: /synchronizer_tb/check_output File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+# Break in Process check_output at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd line 105
+quit -sim
+# End time: 16:51:13 on Sep 04,2024, Elapsed time: 0:01:51
+# Errors: 1, Warnings: 7
+vsim work.synchronizer_tb
+# vsim work.synchronizer_tb 
+# Start time: 16:51:30 on Sep 04,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading work.synchronizer_tb(testbench)#1
+# ** Warning: (vsim-3473) Component instance "dut : synchronizer" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+quit -sim
+# End time: 16:52:24 on Sep 04,2024, Elapsed time: 0:00:54
+# Errors: 0, Warnings: 3
+vsim work.synchronizer_tb
+# vsim work.synchronizer_tb 
+# Start time: 16:52:30 on Sep 04,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading work.synchronizer_tb(testbench)#1
+# ** Warning: (vsim-3473) Component instance "dut : synchronizer" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+add wave -r /*
+run
+# ** Warning: Error for clock cycle 0:
+# sync = 0 sync_expected  = U
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 1:
+# sync = 0 sync_expected  = U
+#    Time: 10 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 4:
+# sync = 0 sync_expected  = 1
+#    Time: 40 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 5:
+# sync = 0 sync_expected  = 1
+#    Time: 50 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 6:
+# sync = 0 sync_expected  = 1
+#    Time: 60 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Failure: tests failed!
+#    Time: 100 ns  Iteration: 0  Process: /synchronizer_tb/check_output File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+# Break in Process check_output at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd line 105
+quit -sim
+# End time: 16:54:20 on Sep 04,2024, Elapsed time: 0:01:50
+# Errors: 1, Warnings: 7
+vsim work.synchronizer_tb
+# vsim work.synchronizer_tb 
+# Start time: 16:54:26 on Sep 04,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading work.synchronizer_tb(testbench)#1
+# ** Warning: (vsim-3473) Component instance "dut : synchronizer" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+add wave -r /*
+run
+# ** Warning: Error for clock cycle 0:
+# sync = 0 sync_expected  = U
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 1:
+# sync = 0 sync_expected  = U
+#    Time: 10 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 4:
+# sync = 0 sync_expected  = 1
+#    Time: 40 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 5:
+# sync = 0 sync_expected  = 1
+#    Time: 50 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 6:
+# sync = 0 sync_expected  = 1
+#    Time: 60 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Failure: tests failed!
+#    Time: 100 ns  Iteration: 0  Process: /synchronizer_tb/check_output File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+# Break in Process check_output at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd line 105
+# Compile of synchronizer.vhd was successful.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Warning: (vsim-3473) Component instance "dut : synchronizer" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+vsim work.synchronizer_tb
+# End time: 16:57:21 on Sep 04,2024, Elapsed time: 0:02:55
+# Errors: 0, Warnings: 2
+# vsim work.synchronizer_tb 
+# Start time: 16:57:21 on Sep 04,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading work.synchronizer_tb(testbench)#1
+# ** Warning: (vsim-3473) Component instance "dut : synchronizer" is not bound.
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+run -all
+# ** Warning: Error for clock cycle 0:
+# sync = 0 sync_expected  = U
+#    Time: 0 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 1:
+# sync = 0 sync_expected  = U
+#    Time: 10 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 4:
+# sync = 0 sync_expected  = 1
+#    Time: 40 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 5:
+# sync = 0 sync_expected  = 1
+#    Time: 50 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Warning: Error for clock cycle 6:
+# sync = 0 sync_expected  = 1
+#    Time: 60 ns  Iteration: 0  Instance: /synchronizer_tb
+# ** Failure: tests failed!
+#    Time: 100 ns  Iteration: 0  Process: /synchronizer_tb/check_output File: C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd
+# Break in Process check_output at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd line 105
+run -all
+# 1
+# Break in Process check_output at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd line 111
+add wave -position insertpoint  \
+sim:/synchronizer_tb/sync_tb \
+sim:/synchronizer_tb/sync_expected \
+sim:/synchronizer_tb/clk_tb \
+sim:/synchronizer_tb/CLK_PERIOD \
+sim:/synchronizer_tb/async_tb
+# Compile of synchronizer_tb.vhd was successful.
+# Compile of synchronizer.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading std.env(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.synchronizer_tb(testbench)#1
+run -all
+# ** Note: all tests passed!
+#    Time: 100 ns  Iteration: 0  Instance: /synchronizer_tb
+# 1
+# Break in Process check_output at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/synchronizer/synchronizer_tb.vhd line 111
+# End time: 17:58:58 on Sep 04,2024, Elapsed time: 1:01:37
+# Errors: 0, Warnings: 1

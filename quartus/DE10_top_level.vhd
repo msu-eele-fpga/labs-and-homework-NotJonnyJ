@@ -94,7 +94,7 @@ architecture DE10Nano_arch of DE10_Top_Level is
 
 	-- Add VDHL code to connect the four switches (SW) to four LEDs
 		LED(3 downto 0) <= SW(3 downto 0);
-		LED(7 downto 4) <= null;
+		--LED(7 downto 4) <= null;
 
 	
 end architecture DE10Nano_arch;

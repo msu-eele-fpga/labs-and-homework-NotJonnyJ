@@ -10,7 +10,7 @@ architecture testbench of synchronizer_tb is
 
   component synchronizer is
     port (
-      clk   : in    std_logic;
+      clk   : in    std_ulogic;
       async : in    std_ulogic;
       sync  : out   std_ulogic
     );
