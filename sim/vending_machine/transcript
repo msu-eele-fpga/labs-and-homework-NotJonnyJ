@@ -525,3 +525,5 @@ run -all
 # End of testbench.
 # 1
 # Break in Process stimuli_generator at C:/Users/hughe/Documents/EELE467_Work/labs-and-homework-NotJonnyJ/sim/vending_machine/vending_machine_tb.vhd line 72
+# End time: 13:44:54 on Sep 10,2024, Elapsed time: 0:52:26
+# Errors: 0, Warnings: 1
