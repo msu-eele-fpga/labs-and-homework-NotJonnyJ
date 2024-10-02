@@ -28,9 +28,6 @@ architecture clk_gen_arch of clk_gen is
     signal counter5 : unsigned(NUM_OF_BITS downto 0) := (others => '0');
 
     signal cnt_times_two : unsigned(NUM_OF_BITS downto 0);
-	 
-	 
-    
 
 
     begin 

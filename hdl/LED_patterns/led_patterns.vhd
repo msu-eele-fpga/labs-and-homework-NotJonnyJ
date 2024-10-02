@@ -147,7 +147,7 @@ architecture led_patterns_arch of led_patterns is
     signal led_output_s1       : std_ulogic_vector(6 downto 0) := "0000011";
     signal led_output_s2       : std_ulogic_vector(6 downto 0) := "0000001";
     signal led_output_s3       : std_ulogic_vector(6 downto 0) := "1111111";
-    signal led_output_s4       : std_ulogic_vector(6 downto 0) := "1010101";
+    signal led_output_s4       : std_ulogic_vector(6 downto 0) := "0000111";
 
     begin
 
@@ -225,7 +225,7 @@ architecture led_patterns_arch of led_patterns is
     
         state4_comp : state4
             port map (
-                clk => half_base_clock,
+                clk => twice_base_clock,
                 rst => rst,
                 leds => led_output_s4);
                     
@@ -340,48 +340,51 @@ architecture led_patterns_arch of led_patterns is
 						
                         case select_state is
                             when SW =>
-                                led7_enable <= false;
+                                led7_enable <= true;
                                 enable_one_sec <= true;
+                                led(7 downto 0) <= (others => '0');
                                 led(3 downto 0) <= switches(3 downto 0);
                             when S0_walking_one => 
+                                led7_enable <= true;
                                 enable_one_sec <= false;
                                 led(6 downto 0) <= led_output_s0;
-                                led7_enable <= true;
                                 led(7) <= led7_output;
 
                             when S1_walking_two =>
+                                led7_enable <= true;
                                 enable_one_sec <= false;
                                 led(6 downto 0) <= led_output_s1;
-                                led7_enable <= true;
                                 led(7) <= led7_output;
                                 
 
                             when S2_up_counter =>
-                                led(6 downto 0) <= led_output_s2;
                                 enable_one_sec <= false;
                                 led7_enable <= true;
+                                led(6 downto 0) <= led_output_s2;
                                 led(7) <= led7_output;  
 
 
                             when S3_down_counter =>
-                                led(6 downto 0) <= led_output_s3;
-                                enable_one_sec <= false;
-                                led(7) <= led7_output;
                                 led7_enable <= true;
+                                enable_one_sec <= false;
+                                led(6 downto 0) <= led_output_s3;
+                                led(7) <= led7_output;
+                                
 
 
                             when S4 =>
-                                led(6 downto 0) <= led_output_s4;
                                 enable_one_sec <= false;
-                                led(7) <= led7_output;
                                 led7_enable <= true;
+                                led(6 downto 0) <= led_output_s4;
+                                led(7) <= led7_output;
+                                
 
 
                             when others =>
+                                
                                 led(6 downto 0) <= "0000000";
                                 led(7) <= '1';
-                                enable_one_sec <= false;
-                                led7_enable <= false;
+                                
 
                         end case;
                     end if;

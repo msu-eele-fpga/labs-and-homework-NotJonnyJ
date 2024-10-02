@@ -25,10 +25,11 @@ architecture state4_arch of state4 is
         free_pattern : process(clk, rst)
             begin
                 if rst = '1' then
-                    leds <= "1010101";
-                    leds_last_state <= "1010101";
+                    leds <= "0000111";
+                    leds_last_state <= "0000111";
                 elsif rising_edge(clk) then
                     leds_last_state <= leds_last_state rol 1;
+                    leds <= (others => '0');
                     leds <= std_ulogic_vector(leds_last_state);
                 end if;
         end process free_pattern;
