@@ -2,7 +2,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use IEEE.std_logic_unsigned.all;
-
+use ieee.math_real.all;
 
 entity timed_counter is
     generic (
@@ -18,7 +18,7 @@ architecture timed_counter_arch of timed_counter is
 
     constant COUNTER_LIMIT : natural := (count_time/clk_period);
 
-    signal count : natural range 0 to 15;
+    signal count : unsigned(25 downto 0) := (others => '0');
 
     begin  
     
@@ -33,11 +33,11 @@ architecture timed_counter_arch of timed_counter is
                     elsif (count = COUNTER_LIMIT) then
 			count <= count + 1;
                         done <= true;	
-			count <= 0;
+			count <= (others => '0');
                     end if;
 		
             else
-                count <= 0;
+                count <= (others => '0');
             end if;
     end if;
 

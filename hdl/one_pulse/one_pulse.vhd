@@ -26,7 +26,11 @@ architecture one_pulse_arch of one_pulse is
                 case state is
 
                 when off =>
-                    state <= on_state when input = '1';
+                    if input = '1' then
+                        state <= on_state;
+                    else
+                        state <= off;
+                    end if;
                 when on_state =>
                     state <= waiting;
                 when waiting =>
