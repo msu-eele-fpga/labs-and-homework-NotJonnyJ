@@ -38,13 +38,21 @@ architecture debouncer_arch of debouncer is
 
                 when off =>
                     count <= 0;
-                    state <= button_pressed when input = '1' else off;
+                    if input = '1' then
+                        state <= button_pressed;
+                    else 
+                        state <= off;
+                    end if;
                 when button_pressed =>
                     if(count < COUNTER_LIMIT-1) then
                         count <= count + 1;
                     elsif(count = COUNTER_LIMIT-1) then
                         count <= 0;
-                        state <= debouncing when input = '0';
+                        if input = '0' then
+                            state <= debouncing;
+                        else 
+                            state <= button_pressed;
+                        end if;
                     else
                         count <= 0;
                     end if;

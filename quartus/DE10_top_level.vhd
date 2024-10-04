@@ -90,12 +90,58 @@ end entity DE10_Top_Level;
 
 architecture DE10Nano_arch of DE10_Top_Level is
 
+
+	
+	
+	signal hps_control_temp		: boolean := false;
+	
+	signal rst						: std_ulogic := '0';
+	
+	signal base_period_set		: unsigned(7 downto 0) := "00010000";
+	signal led_reg_temp			: std_ulogic_vector(7 downto 0) := "00000001";
+	
+	signal led_intermediate   : std_ulogic_vector(7 downto 0);
+	
+	signal push_button_0 		: std_logic;
+	signal push_button_1 		: std_logic;
+	
+	
+	component led_patterns is
+    generic(
+        SYSTEM_CLOCK_PERIOD : time  := 20 ns);
+    port(
+        clk             : in std_ulogic; -- system clock
+        rst             : in std_ulogic; -- system reset (assume active high, change at top level if needed)
+        push_button     : in std_ulogic; -- Pushbutton to change state (assume active high, change at top level if needed)
+        switches        : in std_ulogic_vector(3 downto 0); -- Switches that determine the next state to be selected
+        hps_led_control : in boolean; -- Software is in control when asserted (=1)
+        base_period     : in unsigned(7 downto 0); -- base transition period in seconds , fixed -point data type (W=8, F=4).
+        led_reg         : in std_ulogic_vector(7 downto 0); -- LED register
+        led             : out std_ulogic_vector(7 downto 0) -- LEDs on the DE10-Nano board
+    );
+	end component led_patterns;
+
 	begin
+	
+	
+	
+	push_button_0 <= not KEY(0);
+	push_button_1 <= not KEY(1);
 
-	-- Add VDHL code to connect the four switches (SW) to four LEDs
-		LED(3 downto 0) <= SW(3 downto 0);
-		--LED(7 downto 4) <= null;
-
+	dut : component led_patterns
+		port map (
+			clk => FPGA_CLK1_50,
+			rst => push_button_1,
+			push_button => push_button_0,
+			switches => std_ulogic_vector(SW),
+			hps_led_control => hps_control_temp,
+			base_period => base_period_set,
+			led_reg => led_reg_temp,
+			led => led_intermediate
+		);
+		
+		
+		LED <= std_logic_vector(led_intermediate);
 	
 end architecture DE10Nano_arch;
 
