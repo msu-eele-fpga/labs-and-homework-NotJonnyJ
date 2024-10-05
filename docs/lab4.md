@@ -12,10 +12,10 @@ The last requiremnt is about the state transitions. When the device is running t
 
 ## 2. System Architecture
 ### Block Diagram
-![Block Diagram](docs\assets\Lab4_Block_Diagram.png)
+![Block Diagram](assets/Lab4_Block_Diagram.png)
 
 ### State Diagram
-![State Diagram](docs\assets\FPGA Lab4 State Diagram.png)
+![State Diagram](assets/FPGA Lab4 State Diagram.png)
 
 ## 3. Implementation Details
 There are five different subcomonent state. When all switches are off the state machine selects state zero and leds 0 through 6 are diven by a walking one led across the array, this is shifting to the right at 1/2 the base rate. In state one the output is two side by side LEDs that are rotating left at 1/4 the base rate. In state 2 the leds are a 7 bit up counter running at 2 times the base rate. In state 3 the leds are a 7-bit down counter moving at 1/8 the base rate. and in state 4 the leds show three side by side leds rotating left at 2 times the base rate. 
