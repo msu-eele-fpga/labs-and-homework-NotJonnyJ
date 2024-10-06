@@ -4,10 +4,10 @@ In this lab i used the signal tap tool in Quartus to analyze the sates of led_pa
 
 ## Deliverables
 ### Signal Tap Output Waveform
-![Signal tap waveform](assests/Lab5_signal_tap.png)
+![Signal tap waveform](assets/Lab5_signal_tap.png)
 
 ###
-![Signal tap sample depth](assests/lab5_sample_depth.png)
+![Signal tap sample depth](assets/lab5_sample_depth.png)
 
 ### Questions 
 
