@@ -12,7 +12,7 @@ entity led_patterns is
         rst             : in std_ulogic; -- system reset (assume active high, change at top level if needed)
         push_button     : in std_ulogic; -- Pushbutton to change state (assume active high, change at top level if needed)
         switches        : in std_ulogic_vector(3 downto 0); -- Switches that determine the next state to be selected
-        hps_led_control : in boolean; -- Software is in control when asserted (=1)
+        hps_led_control : in std_logic; -- Software is in control when asserted (=1)
         base_period     : in unsigned(7 downto 0); -- base transition period in seconds , fixed -point data type (W=8, F=4).
         led_reg         : in std_ulogic_vector(7 downto 0); -- LED register
         led             : out std_ulogic_vector(7 downto 0) -- LEDs on the DE10-Nano board
@@ -235,7 +235,7 @@ architecture led_patterns_arch of led_patterns is
                 begin
                     if rst = '1' then
                         select_state <= SW;
-                    elsif rising_edge(clk) and hps_led_control = false then
+                    elsif rising_edge(clk) and hps_led_control = '0' then
 
                         case select_state is
                             when SW =>
@@ -331,7 +331,7 @@ architecture led_patterns_arch of led_patterns is
 
             end process state_logic;
 
-            output_logic : process(all)
+            output_logic : process(clk)
 
                 begin
                     if rst = '1' then
