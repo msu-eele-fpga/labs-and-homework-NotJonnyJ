@@ -325,7 +325,6 @@ architecture led_patterns_arch of led_patterns is
 
                             end case;
 
-                            
                     end if;
 
 
@@ -336,7 +335,7 @@ architecture led_patterns_arch of led_patterns is
                 begin
                     if rst = '1' then
                         led <= "00000000";
-                    elsif rising_edge(clk) then
+                    elsif rising_edge(clk) and hps_led_control = '0' then
 						
                         case select_state is
                             when SW =>
@@ -387,6 +386,10 @@ architecture led_patterns_arch of led_patterns is
                                 
 
                         end case;
+
+                    elsif rising_edge(clk) and hps_led_control = '1' then
+                        led <= led_reg;
+
                     end if;
 
             end process output_logic;

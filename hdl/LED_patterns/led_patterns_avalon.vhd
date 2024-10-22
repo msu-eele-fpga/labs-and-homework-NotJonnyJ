@@ -82,7 +82,7 @@ architecture led_patterns_avalon_arch of led_patterns_avalon is
                 
                 led_reg <= "11111111"; 
 
-                base_period <= "0001000";
+                base_period <= "00010000";
 
                 elsif rising_edge(clk) and avs_write = '1' then
                     case avs_address is
