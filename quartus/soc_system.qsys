@@ -46,6 +46,14 @@
          type = "int";
       }
    }
+   element led_patters_avalon_0.avalon_slave_0_1_1
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "String";
+      }
+   }
    element soc_system
    {
       datum _originalDeviceFamily
