@@ -16,18 +16,22 @@ const uint32_t BASE_PERIOD_ADDRESS = 0xFF200008;
 int verbose_flag = 0;
 
 static volatile int running = 1;
+volatile uint32_t *hps_target_virtual_addr;
 
-void intHandler(int dummy) 
+void intHandler(int signal) 
 {
+    *hps_target_virtual_addr = 0x00;
     printf("\nResetting FPGA back to Hardware Control Mode\n");
     running = 0;
 }
+<<<<<<< HEAD
 
 
+=======
+  
+>>>>>>> bbf72bdf08fde45eb65b65af779c75b932e97c85
 int main(int argc, char *argv[])  
 {
-    signal(SIGINT, intHandler);
-
     const size_t PAGE_SIZE = sysconf(_SC_PAGE_SIZE);
 
     int fd = open("/dev/mem", O_RDWR | O_SYNC);
@@ -90,6 +94,9 @@ int main(int argc, char *argv[])
 
 
     int opt; 
+
+    signal(SIGINT, intHandler);
+
       
     // put ':' in the starting of the 
     // string so that program can  
@@ -120,6 +127,7 @@ int main(int argc, char *argv[])
                 break;  
 
             case 'p':  
+                *hps_target_virtual_addr = 0x01;
 
                 // Makes a patterns
                 // intput : pattern1 time1 pattern2 time2 pattern3 time3
