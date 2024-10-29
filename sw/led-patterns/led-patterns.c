@@ -13,6 +13,8 @@ const uint32_t HPS_CONTROL_ADDRESS = 0xFF200000;
 const uint32_t LED_ADDRESS = 0xFF200004;
 const uint32_t BASE_PERIOD_ADDRESS = 0xFF200008;
 
+volatile uint32_t *hps_target_virtual_addr; // Global pointer
+
 int verbose_flag = 0;
 
 static volatile int running = 1;
@@ -20,13 +22,28 @@ volatile uint32_t *hps_target_virtual_addr;
 
 void intHandler(int signal) 
 {
-    *hps_target_virtual_addr = 0x00;
     printf("\nResetting FPGA back to Hardware Control Mode\n");
     running = 0;
+    *hps_target_virtual_addr = 0x00;
+    exit(0);
+    
 }
+
+void new_pattern(volatile uint32_t *led_target_virtual_addr, uint32_t pattern, uint32_t display_time)
+{   
+    *led_target_virtual_addr = pattern;
+    if(verbose_flag == 1)
+    {
+        printf("LED pattern: 0x%x, Display time: %u ms\n", pattern, display_time);
+    }
+    sleep(display_time*0.001); 
+}
+
 
 int main(int argc, char *argv[])  
 {
+    signal(SIGINT, intHandler);
+
     const size_t PAGE_SIZE = sysconf(_SC_PAGE_SIZE);
 
     int fd = open("/dev/mem", O_RDWR | O_SYNC);
@@ -65,7 +82,7 @@ int main(int argc, char *argv[])
     */
 
     volatile uint32_t *led_target_virtual_addr = page_virtual_addr + led_offset_in_page/sizeof(uint32_t *);
-    volatile uint32_t *hps_target_virtual_addr = page_virtual_addr + hps_offset_in_page/sizeof(uint32_t *);
+    hps_target_virtual_addr = page_virtual_addr + hps_offset_in_page/sizeof(uint32_t *);
     volatile uint32_t *base_target_virtual_addr = page_virtual_addr + base_offset_in_page/sizeof(uint32_t *);
 
     /*
@@ -76,21 +93,13 @@ int main(int argc, char *argv[])
     printf("\n");
     */
 
-    void new_pattern(volatile uint32_t *led_target_virtual_addr, uint32_t pattern, uint32_t display_time)
-    {   
-        *led_target_virtual_addr = pattern;
-        if(verbose_flag == 1)
-        {
-            printf("LED pattern: 0x%x, Display time: %u ms\n", pattern, display_time);
-        }
-        sleep(display_time*0.001); 
-    }
+    
 
 
 
     int opt; 
 
-    signal(SIGINT, intHandler);
+    
 
       
     // put ':' in the starting of the 
@@ -149,10 +158,9 @@ int main(int argc, char *argv[])
                 break;
 
             case 'f':  
+                *hps_target_virtual_addr = 0x01;
             //Input patterns as a file input 
-                printf("IN LOOP\n");
                 FILE *file_ptr = fopen(optarg, "r");
-                
                 if(file_ptr == NULL)
                 {
                     printf(optarg, "\n");
@@ -166,32 +174,23 @@ int main(int argc, char *argv[])
                     printf("\n");
 
                 }
-                
 
                 uint32_t pattern;
                 uint32_t display_time;
-
-                
-
                 char ch[11];
+                
                 while(fgets(ch, sizeof(ch), file_ptr) != NULL)
                 {
-                    printf("after loop\n");
+
                     char *pattern_string = strtok(ch, " ");
                     char *delay_string = strtok(NULL, " \n");
-                    printf("after strings\n");
 
                     if (pattern_string != NULL && delay_string != NULL) 
                     {
-                        printf("after if\n");
+
                         pattern = strtoul(pattern_string, NULL, 16);   
                         display_time = strtoul(delay_string, NULL, 10);
-                        printf("before verbose\n");
-                        if(verbose_flag == 1)
-                        {
-                            printf("after verbose\n");
-                            printf("Pattern: 0x%x, Display Time: %u ms\n", pattern, display_time);
-                        }
+
                         new_pattern(led_target_virtual_addr, pattern, display_time);
                     }
                     else
@@ -199,10 +198,7 @@ int main(int argc, char *argv[])
                         printf("Error parsing line. Ensure each line has both pattern and display time.\n");
                     }
                 }
-
-
-                
-                printf("used -f \n");  
+                *hps_target_virtual_addr = 0x00;
                 break;
 
             case '?':  
