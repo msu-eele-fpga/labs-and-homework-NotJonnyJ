@@ -24,12 +24,7 @@ void intHandler(int signal)
     printf("\nResetting FPGA back to Hardware Control Mode\n");
     running = 0;
 }
-<<<<<<< HEAD
 
-
-=======
-  
->>>>>>> bbf72bdf08fde45eb65b65af779c75b932e97c85
 int main(int argc, char *argv[])  
 {
     const size_t PAGE_SIZE = sysconf(_SC_PAGE_SIZE);
