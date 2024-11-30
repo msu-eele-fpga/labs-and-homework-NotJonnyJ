@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EnsembleReport name="soc_system" kind="soc_system" version="1.0" fabric="QSYS">
  <!-- Format version 23.1 993 (Future versions may contain additional information.) -->
- <!-- 2024.10.20.14:15:35 -->
+ <!-- 2024.11.19.14:04:08 -->
  <!-- A collection of modules and connections -->
  <parameter name="AUTO_GENERATION_ID">
   <type>java.lang.Integer</type>
-  <value>1729455334</value>
+  <value>1732050248</value>
   <derived>false</derived>
   <enabled>true</enabled>
   <visible>false</visible>
@@ -338,9 +338,9 @@ parameters are a RESULT of the module parameters. -->
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
-    <moduleName>led_patters_avalon_0</moduleName>
-    <slaveName>clock</slaveName>
-    <name>led_patters_avalon_0.clock</name>
+    <moduleName>pwm_avalon_0</moduleName>
+    <slaveName>clk</slaveName>
+    <name>pwm_avalon_0.clk</name>
    </clockDomainMember>
    <clockDomainMember>
     <isBridge>false</isBridge>
@@ -15997,10 +15997,10 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>led_patters_avalon_0</moduleName>
-    <slaveName>avalon_slave_0_1_1</slaveName>
-    <name>led_patters_avalon_0.avalon_slave_0_1_1</name>
-    <baseAddress>0</baseAddress>
+    <moduleName>pwm_avalon_0</moduleName>
+    <slaveName>avalon_slave_0</slaveName>
+    <name>pwm_avalon_0.avalon_slave_0</name>
+    <baseAddress>1215568</baseAddress>
     <span>16</span>
    </memoryBlock>
   </interface>
@@ -41827,10 +41827,10 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>led_patters_avalon_0</moduleName>
-    <slaveName>avalon_slave_0_1_1</slaveName>
-    <name>led_patters_avalon_0.avalon_slave_0_1_1</name>
-    <baseAddress>0</baseAddress>
+    <moduleName>pwm_avalon_0</moduleName>
+    <slaveName>avalon_slave_0</slaveName>
+    <name>pwm_avalon_0.avalon_slave_0</name>
+    <baseAddress>1215568</baseAddress>
     <span>16</span>
    </memoryBlock>
   </interface>
@@ -42942,10 +42942,10 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>led_patters_avalon_0</moduleName>
-    <slaveName>avalon_slave_0_1_1</slaveName>
-    <name>led_patters_avalon_0.avalon_slave_0_1_1</name>
-    <baseAddress>4280287232</baseAddress>
+    <moduleName>pwm_avalon_0</moduleName>
+    <slaveName>avalon_slave_0</slaveName>
+    <name>pwm_avalon_0.avalon_slave_0</name>
+    <baseAddress>4281502800</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -43761,10 +43761,10 @@ parameters are a RESULT of the module parameters. -->
    </memoryBlock>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>led_patters_avalon_0</moduleName>
-    <slaveName>avalon_slave_0_1_1</slaveName>
-    <name>led_patters_avalon_0.avalon_slave_0_1_1</name>
-    <baseAddress>4280287232</baseAddress>
+    <moduleName>pwm_avalon_0</moduleName>
+    <slaveName>avalon_slave_0</slaveName>
+    <name>pwm_avalon_0.avalon_slave_0</name>
+    <baseAddress>4281502800</baseAddress>
     <span>16</span>
    </memoryBlock>
    <memoryBlock>
@@ -71837,10 +71837,10 @@ parameters are a RESULT of the module parameters. -->
    </port>
    <memoryBlock>
     <isBridge>false</isBridge>
-    <moduleName>led_patters_avalon_0</moduleName>
-    <slaveName>avalon_slave_0_1_1</slaveName>
-    <name>led_patters_avalon_0.avalon_slave_0_1_1</name>
-    <baseAddress>0</baseAddress>
+    <moduleName>pwm_avalon_0</moduleName>
+    <slaveName>avalon_slave_0</slaveName>
+    <name>pwm_avalon_0.avalon_slave_0</name>
+    <baseAddress>1215568</baseAddress>
     <span>16</span>
    </memoryBlock>
   </interface>
@@ -71907,10 +71907,10 @@ parameters are a RESULT of the module parameters. -->
   </interface>
  </module>
  <module
-   name="led_patters_avalon_0"
-   kind="led_patters_avalon"
+   name="pwm_avalon_0"
+   kind="pwm_avalon"
    version="1.0"
-   path="led_patters_avalon_0">
+   path="pwm_avalon_0">
   <!-- Describes a single module. Module parameters are
 the requested settings for a module instance. -->
   <parameter name="deviceFamily">
@@ -71929,7 +71929,7 @@ the requested settings for a module instance. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <interface name="avalon_slave_0_1_1" kind="avalon_slave" version="23.1">
+  <interface name="avalon_slave_0" kind="avalon_slave" version="23.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -71991,7 +71991,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="associatedClock">
     <type>java.lang.String</type>
-    <value>clock</value>
+    <value>clk</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -71999,7 +71999,7 @@ parameters are a RESULT of the module parameters. -->
    </parameter>
    <parameter name="associatedReset">
     <type>java.lang.String</type>
-    <value>rst_1_1</value>
+    <value>rst</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -72294,70 +72294,13 @@ parameters are a RESULT of the module parameters. -->
     <role>writedata</role>
    </port>
   </interface>
-  <interface name="export_1" kind="conduit_end" version="23.1">
+  <interface name="rst" kind="reset_sink" version="23.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
    <parameter name="associatedClock">
     <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="associatedReset">
-    <type>java.lang.String</type>
-    <value></value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="deviceFamily">
-    <type>java.lang.String</type>
-    <value>UNKNOWN</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <parameter name="generateLegacySim">
-    <type>boolean</type>
-    <value>false</value>
-    <derived>false</derived>
-    <enabled>true</enabled>
-    <visible>true</visible>
-    <valid>true</valid>
-   </parameter>
-   <type>conduit</type>
-   <isStart>false</isStart>
-   <port>
-    <name>led</name>
-    <direction>Output</direction>
-    <width>8</width>
-    <role>led</role>
-   </port>
-   <port>
-    <name>push_button</name>
-    <direction>Input</direction>
-    <width>1</width>
-    <role>push_button</role>
-   </port>
-   <port>
-    <name>switches</name>
-    <direction>Input</direction>
-    <width>4</width>
-    <role>switches</role>
-   </port>
-  </interface>
-  <interface name="rst_1_1" kind="reset_sink" version="23.1">
-   <!-- The connection points exposed by a module instance for the
-particular module parameters. Connection points and their
-parameters are a RESULT of the module parameters. -->
-   <parameter name="associatedClock">
-    <type>java.lang.String</type>
-    <value>clock</value>
+    <value>clk</value>
     <derived>false</derived>
     <enabled>true</enabled>
     <visible>true</visible>
@@ -72396,7 +72339,7 @@ parameters are a RESULT of the module parameters. -->
     <role>reset</role>
    </port>
   </interface>
-  <interface name="clock" kind="clock_sink" version="23.1">
+  <interface name="clk" kind="clock_sink" version="23.1">
    <!-- The connection points exposed by a module instance for the
 particular module parameters. Connection points and their
 parameters are a RESULT of the module parameters. -->
@@ -72439,6 +72382,63 @@ parameters are a RESULT of the module parameters. -->
     <direction>Input</direction>
     <width>1</width>
     <role>clk</role>
+   </port>
+  </interface>
+  <interface name="conduit_end" kind="conduit_end" version="23.1">
+   <!-- The connection points exposed by a module instance for the
+particular module parameters. Connection points and their
+parameters are a RESULT of the module parameters. -->
+   <parameter name="associatedClock">
+    <type>java.lang.String</type>
+    <value>clk</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="associatedReset">
+    <type>java.lang.String</type>
+    <value></value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="deviceFamily">
+    <type>java.lang.String</type>
+    <value>UNKNOWN</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <parameter name="generateLegacySim">
+    <type>boolean</type>
+    <value>false</value>
+    <derived>false</derived>
+    <enabled>true</enabled>
+    <visible>true</visible>
+    <valid>true</valid>
+   </parameter>
+   <type>conduit</type>
+   <isStart>false</isStart>
+   <port>
+    <name>blue_output</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>blue_output</role>
+   </port>
+   <port>
+    <name>red_output</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>red_output</role>
+   </port>
+   <port>
+    <name>green_output</name>
+    <direction>Output</direction>
+    <width>1</width>
+    <role>green_output</role>
    </port>
   </interface>
  </module>
@@ -80427,11 +80427,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>interrupt_sender</endConnectionPoint>
  </connection>
  <connection
-   name="hps_bridges.h2f_lw/led_patters_avalon_0.avalon_slave_0_1_1"
+   name="hps_bridges.h2f_lw/pwm_avalon_0.avalon_slave_0"
    kind="avalon"
    version="23.1"
    start="hps_bridges.h2f_lw"
-   end="led_patters_avalon_0.avalon_slave_0_1_1">
+   end="pwm_avalon_0.avalon_slave_0">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -80442,7 +80442,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0000</value>
+   <value>0x00128c50</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -80474,15 +80474,15 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>hps_bridges</startModule>
   <startConnectionPoint>h2f_lw</startConnectionPoint>
-  <endModule>led_patters_avalon_0</endModule>
-  <endConnectionPoint>avalon_slave_0_1_1</endConnectionPoint>
+  <endModule>pwm_avalon_0</endModule>
+  <endConnectionPoint>avalon_slave_0</endConnectionPoint>
  </connection>
  <connection
-   name="jtag_mm1.master/led_patters_avalon_0.avalon_slave_0_1_1"
+   name="jtag_mm1.master/pwm_avalon_0.avalon_slave_0"
    kind="avalon"
    version="23.1"
    start="jtag_mm1.master"
-   end="led_patters_avalon_0.avalon_slave_0_1_1">
+   end="pwm_avalon_0.avalon_slave_0">
   <parameter name="arbitrationPriority">
    <type>int</type>
    <value>1</value>
@@ -80493,7 +80493,7 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <parameter name="baseAddress">
    <type>java.math.BigInteger</type>
-   <value>0x0000</value>
+   <value>0x00128c50</value>
    <derived>false</derived>
    <enabled>true</enabled>
    <visible>true</visible>
@@ -80525,8 +80525,8 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>jtag_mm1</startModule>
   <startConnectionPoint>master</startConnectionPoint>
-  <endModule>led_patters_avalon_0</endModule>
-  <endConnectionPoint>avalon_slave_0_1_1</endConnectionPoint>
+  <endModule>pwm_avalon_0</endModule>
+  <endConnectionPoint>avalon_slave_0</endConnectionPoint>
  </connection>
  <connection
    name="fpga_clk.clk/jtag_mm1.clk"
@@ -80556,11 +80556,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
-   name="fpga_clk.clk/led_patters_avalon_0.clock"
+   name="fpga_clk.clk/pwm_avalon_0.clk"
    kind="clock"
    version="23.1"
    start="fpga_clk.clk"
-   end="led_patters_avalon_0.clock">
+   end="pwm_avalon_0.clk">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -80579,8 +80579,8 @@ parameters are a RESULT of the module parameters. -->
   </parameter>
   <startModule>fpga_clk</startModule>
   <startConnectionPoint>clk</startConnectionPoint>
-  <endModule>led_patters_avalon_0</endModule>
-  <endConnectionPoint>clock</endConnectionPoint>
+  <endModule>pwm_avalon_0</endModule>
+  <endConnectionPoint>clk</endConnectionPoint>
  </connection>
  <connection
    name="fpga_clk.clk/hps_bridges.h2f_lw_axi_clock"
@@ -80637,11 +80637,11 @@ parameters are a RESULT of the module parameters. -->
   <endConnectionPoint>clk_reset</endConnectionPoint>
  </connection>
  <connection
-   name="fpga_clk.clk_reset/led_patters_avalon_0.rst_1_1"
+   name="jtag_mm1.master_reset/pwm_avalon_0.rst"
    kind="reset"
    version="23.1"
-   start="fpga_clk.clk_reset"
-   end="led_patters_avalon_0.rst_1_1">
+   start="jtag_mm1.master_reset"
+   end="pwm_avalon_0.rst">
   <parameter name="deviceFamily">
    <type>java.lang.String</type>
    <value>UNKNOWN</value>
@@ -80658,37 +80658,10 @@ parameters are a RESULT of the module parameters. -->
    <visible>true</visible>
    <valid>true</valid>
   </parameter>
-  <startModule>fpga_clk</startModule>
-  <startConnectionPoint>clk_reset</startConnectionPoint>
-  <endModule>led_patters_avalon_0</endModule>
-  <endConnectionPoint>rst_1_1</endConnectionPoint>
- </connection>
- <connection
-   name="hps_bridges.h2f_reset/led_patters_avalon_0.rst_1_1"
-   kind="reset"
-   version="23.1"
-   start="hps_bridges.h2f_reset"
-   end="led_patters_avalon_0.rst_1_1">
-  <parameter name="deviceFamily">
-   <type>java.lang.String</type>
-   <value>UNKNOWN</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <parameter name="generateLegacySim">
-   <type>boolean</type>
-   <value>false</value>
-   <derived>false</derived>
-   <enabled>true</enabled>
-   <visible>true</visible>
-   <valid>true</valid>
-  </parameter>
-  <startModule>hps_bridges</startModule>
-  <startConnectionPoint>h2f_reset</startConnectionPoint>
-  <endModule>led_patters_avalon_0</endModule>
-  <endConnectionPoint>rst_1_1</endConnectionPoint>
+  <startModule>jtag_mm1</startModule>
+  <startConnectionPoint>master_reset</startConnectionPoint>
+  <endModule>pwm_avalon_0</endModule>
+  <endConnectionPoint>rst</endConnectionPoint>
  </connection>
  <plugin>
   <instanceCount>1</instanceCount>
@@ -81084,10 +81057,10 @@ parameters are a RESULT of the module parameters. -->
  </plugin>
  <plugin>
   <instanceCount>1</instanceCount>
-  <name>led_patters_avalon</name>
+  <name>pwm_avalon</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IModule</subtype>
-  <displayName>led_patters_avalon</displayName>
+  <displayName>pwm_avalon</displayName>
   <version>1.0</version>
  </plugin>
  <plugin>
@@ -81099,7 +81072,7 @@ parameters are a RESULT of the module parameters. -->
   <version>23.1</version>
  </plugin>
  <plugin>
-  <instanceCount>45</instanceCount>
+  <instanceCount>44</instanceCount>
   <name>reset</name>
   <type>com.altera.entityinterfaces.IElementClass</type>
   <subtype>com.altera.entityinterfaces.IConnection</subtype>
