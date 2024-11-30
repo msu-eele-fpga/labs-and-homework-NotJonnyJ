@@ -276,9 +276,9 @@ architecture DE10Nano_arch of DE10_Top_Level is
       memory_oct_rzqin                : in    std_logic;
       clk_clk                         : in    std_logic;
       reset_reset_n                   : in    std_logic;
-	   led_patterns_led                : out   std_logic_vector(7 downto 0);                     -- led
-      led_patterns_push_button        : in    std_logic := 'X';             -- push_button
-      led_patterns_switches           : in    std_logic_vector(3 downto 0)  := (others => 'X')  -- switches
+	  pwm_controller_blue_output      : out   std_logic;                                        -- blue_output
+      pwm_controller_red_output       : out   std_logic;                                        -- red_output
+      pwm_controller_green_output     : out   std_logic;                                        -- green_output
 
 );
   end component soc_system;
@@ -374,9 +374,9 @@ architecture DE10Nano_arch of DE10_Top_Level is
 
       clk_clk       => fpga_clk1_50,
       reset_reset_n =>  not rst,
-	   led_patterns_led                => led_intermediate,                -- led_patterns.led
-      led_patterns_push_button        => push_button_0,        --             .push_button
-      led_patterns_switches           => std_logic_vector(sw)            --             .switches
+	  pwm_controller_blue_output      => gpio_1[0],     -- blue_output
+      pwm_controller_red_output       => gpio_1[2],     -- red_output
+      pwm_controller_green_output     => gpio_1[4],     -- green_output
 
     );
 

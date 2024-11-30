@@ -34,23 +34,31 @@
    {
       datum _sortIndex
       {
-         value = "3";
-         type = "int";
-      }
-   }
-   element led_patters_avalon_0
-   {
-      datum _sortIndex
-      {
          value = "2";
          type = "int";
       }
    }
-   element led_patters_avalon_0.avalon_slave_0_1_1
+   element pwm_avalon_0
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element pwm_avalon_0.avalon_slave_0
    {
       datum baseAddress
       {
-         value = "0";
+         value = "1215568";
+         type = "String";
+      }
+   }
+   element soc_system
+   {
+      datum _originalDeviceFamily
+      {
+         value = "Cyclone V";
          type = "String";
       }
    }
@@ -362,12 +370,12 @@
  <interface name="hps_io" internal="hps.hps_io" type="conduit" dir="end" />
  <interface name="hps_spim0" internal="hps.spim0" />
  <interface name="hps_spim0_sclk_out" internal="hps.spim0_sclk_out" />
+ <interface name="memory" internal="hps.memory" type="conduit" dir="end" />
  <interface
-   name="led_patterns"
-   internal="led_patters_avalon_0.export_1"
+   name="pwm_controller"
+   internal="pwm_avalon_0.conduit_end"
    type="conduit"
    dir="end" />
- <interface name="memory" internal="hps.memory" type="conduit" dir="end" />
  <interface name="reset" internal="fpga_clk.clk_in_reset" type="reset" dir="end" />
  <module name="fpga_clk" kind="clock_source" version="23.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
@@ -919,27 +927,23 @@
   <parameter name="PLI_PORT" value="50000" />
   <parameter name="USE_PLI" value="0" />
  </module>
- <module
-   name="led_patters_avalon_0"
-   kind="led_patters_avalon"
-   version="1.0"
-   enabled="1" />
+ <module name="pwm_avalon_0" kind="pwm_avalon" version="1.0" enabled="1" />
  <connection
    kind="avalon"
    version="23.1"
    start="hps.h2f_lw_axi_master"
-   end="led_patters_avalon_0.avalon_slave_0_1_1">
+   end="pwm_avalon_0.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x00128c50" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="23.1"
    start="jtag_mm1.master"
-   end="led_patters_avalon_0.avalon_slave_0_1_1">
+   end="pwm_avalon_0.avalon_slave_0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x00128c50" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="clock" version="23.1" start="fpga_clk.clk" end="jtag_mm1.clk" />
@@ -947,7 +951,7 @@
    kind="clock"
    version="23.1"
    start="fpga_clk.clk"
-   end="led_patters_avalon_0.clock" />
+   end="pwm_avalon_0.clk" />
  <connection
    kind="clock"
    version="23.1"
@@ -961,13 +965,8 @@
  <connection
    kind="reset"
    version="23.1"
-   start="fpga_clk.clk_reset"
-   end="led_patters_avalon_0.rst_1_1" />
- <connection
-   kind="reset"
-   version="23.1"
-   start="hps.h2f_reset"
-   end="led_patters_avalon_0.rst_1_1" />
+   start="jtag_mm1.master_reset"
+   end="pwm_avalon_0.rst" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />
 </system>
