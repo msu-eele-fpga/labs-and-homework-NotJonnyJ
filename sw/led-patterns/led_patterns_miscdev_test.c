@@ -4,13 +4,45 @@
 #include <errno.h>
 #include <string.h>
 #include <unistd.h>
+#include <signal.h>
 
 // TODO: update these offsets if your address are different
 #define HPS_LED_CONTROL_OFFSET 0x0
-#define BASE_PERIOD_OFFSET 0x4
-#define LED_REG_OFFSET 0x08
+#define BASE_PERIOD_OFFSET 0x8
+#define LED_REG_OFFSET 0x04
+
+
+static volatile int running = 1;
+
+void intHandler(int signal) {
+	// Turn on hardware-control mode
+	FILE *file;
+	size_t ret;	
+	uint32_t val;
+
+	file = fopen("/dev/led_patterns" , "rb+" );
+	if (file == NULL) {
+		printf("failed to open file\n");
+		exit(1);
+	}
+
+	printf("back to hardware-control mode....\n");
+	val = 0x00;
+    ret = fseek(file, HPS_LED_CONTROL_OFFSET, SEEK_SET);
+	ret = fwrite(&val, 4, 1, file);
+	fflush(file);
+    printf("\nResetting FPGA back to Hardware Control Mode\n");
+    running = 0;
+    
+    exit(0);
+    
+}
+
+
 
 int main () {
+
+	signal(SIGINT, intHandler);
 	FILE *file;
 	size_t ret;	
 	uint32_t val;
@@ -41,6 +73,74 @@ int main () {
 	printf("errno =%s\n", strerror(errno));
 
 
+	
+
+	printf("\n************************************\n*");
+	printf("* LAB 4 Pattern\n");
+	printf("************************************\n\n");
+
+	// Turn on software-control mode
+	val = 0x01;
+	ret = fseek(file, HPS_LED_CONTROL_OFFSET, SEEK_SET);
+	ret = fwrite(&val, 4, 1, file);
+	// We need to "flush" so the OS finishes writing to the file before our code continues.
+	fflush(file);
+
+	sleep(0.1);
+
+	// Patterns from Lab 4
+	while(running == 1){
+		val = 0x07;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+
+		sleep(1);
+
+		val = 0x0E;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+
+		sleep(1);
+
+		val = 0x1C;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+
+		sleep(1);
+
+		val = 0x38;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+
+		sleep(1);
+
+		val = 0x70;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+
+		sleep(1);
+
+		val = 0x61;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+
+		sleep(1);
+
+		val = 0x43;
+		ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
+		ret = fwrite(&val, 4, 1, file);
+		fflush(file);
+
+		sleep(1);
+	}
+
+
 	printf("\n************************************\n*");
 	printf("* write values\n");
 	printf("************************************\n\n");
@@ -50,22 +150,6 @@ int main () {
 	ret = fwrite(&val, 4, 1, file);
 	// We need to "flush" so the OS finishes writing to the file before our code continues.
 	fflush(file);
-
-	// Write some values to the LEDs
-	printf("writing patterns to LEDs....\n");
-	val = 0x55;
-    ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
-	ret = fwrite(&val, 4, 1, file);
-	fflush(file);
-
-	sleep(1);
-
-	val = 0xaa;
-    ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
-	ret = fwrite(&val, 4, 1, file);
-	fflush(file);
-
-	sleep(1);
 
 	val = 0xff;
     ret = fseek(file, LED_REG_OFFSET, SEEK_SET);
@@ -101,6 +185,8 @@ int main () {
 	ret = fwrite(&val, 4, 1, file);
 	fflush(file);
 
+	sleep(3);
+
 
 	printf("\n************************************\n*");
 	printf("* read new register values\n");
@@ -120,4 +206,7 @@ int main () {
 
 	fclose(file);
 	return 0;
+
+
+	
 }

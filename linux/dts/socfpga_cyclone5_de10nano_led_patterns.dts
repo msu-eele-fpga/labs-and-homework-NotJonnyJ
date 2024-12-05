@@ -1,5 +1,9 @@
 #include "socfpga_cyclone5_de10nano.dtsi"
 
 /{
+    led_patterns: led_patterns@ff328c50 {
+    compatible = "hughes,led_patterns";
+    reg = <0xff328c50 16>;
+    };
     
 };
