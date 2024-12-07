@@ -10,6 +10,8 @@
 -- License: MIT  (opensource.org/licenses/MIT)
 ----------------------------------------------------------------------------
 
+-- PWM Controller Top level
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
@@ -208,24 +210,7 @@ architecture DE10Nano_arch of DE10_Top_Level is
 	signal push_button_0 		: std_logic;
 	signal push_button_1 		: std_logic;
 
-	component pwm_controller is
-        generic (
-            CLK_PERIOD   : time := 20 ns
-        );
-        port (
-            clk : in std_logic;
-            rst : in std_logic;
-            -- PWM repetition period in milliseconds;
-            -- datatype (W.F) is individually assigned
-            period : in unsigned(31 - 1 downto 0);
-            -- PWM duty cycle between [0 1]; out-of-range values are hard-limited
-            -- datatype (W.F) is individually assigned
-            duty_cycle : in std_logic_vector(18 - 1 downto 0);
-            output : out std_logic
-        );
-    end component;
-
-    signal period        : unsigned(30 downto 0) := "1111110000000000000000000000000"; -- 63 ms     fixed pt 31.25 
+    signal period        : unsigned(30 downto 0) := "0000010000000000000000000000000"; -- 63 ms     fixed pt 31.25 
     signal duty_cycle    : std_logic_vector(17 downto 0) := "010000000000000000";      -- 50% (0.5)  fixed pt 18.17
 	
 	  component soc_system is
@@ -296,9 +281,12 @@ architecture DE10Nano_arch of DE10_Top_Level is
       memory_oct_rzqin                : in    std_logic;
       clk_clk                         : in    std_logic;
       reset_reset_n                   : in    std_logic;
-	   led_patterns_led                : out   std_logic_vector(7 downto 0);                     -- led
-      led_patterns_push_button        : in    std_logic := 'X';             -- push_button
-      led_patterns_switches           : in    std_logic_vector(3 downto 0)  := (others => 'X')  -- switches
+	   --led_patterns_led                : out   std_logic_vector(7 downto 0);                     -- led
+      --led_patterns_push_button        : in    std_logic := 'X';             -- push_button
+      --led_patterns_switches           : in    std_logic_vector(3 downto 0)  := (others => 'X')  -- switches
+		pwm_controller_blue_output      : out std_logic;      -- pwm_controller.blue_output
+      pwm_controller_red_output       : out std_logic;       --               .red_output
+      pwm_controller_green_output     : out std_logic    --               .green_output
 
 );
   end component soc_system;
@@ -308,18 +296,6 @@ architecture DE10Nano_arch of DE10_Top_Level is
 	
 	push_button_0 <= not push_button_n(0);
 	push_button_1 <= not push_button_n(1);
-
-	dut : component pwm_controller
-         generic map(
-            CLK_PERIOD => 20 ns
-        )
-         port map(
-            clk => fpga_clk1_50,
-            rst => rst,
-            period => period,
-            duty_cycle => duty_cycle,
-            output => gpio_0(35)
-    	);
 		
 		
 	  u0 : component soc_system
@@ -406,13 +382,15 @@ architecture DE10Nano_arch of DE10_Top_Level is
 
       clk_clk       => fpga_clk1_50,
       reset_reset_n =>  not rst,
-	   led_patterns_led                => led_intermediate,                -- led_patterns.led
-      led_patterns_push_button        => push_button_0,        --             .push_button
-      led_patterns_switches           => std_logic_vector(sw)            --             .switches
+	   
+		pwm_controller_blue_output      => gpio_1(35),-- blue_output
+      pwm_controller_red_output       => gpio_1(33),     -- red_output
+      pwm_controller_green_output     => gpio_1(31)     -- green_output
 
     );
+	 
 
-	led <= std_ulogic_vector(led_intermediate);
+	--led <= std_ulogic_vector(led_intermediate);
 	--sw <= std_ulogic_vector(sw_intermediate);
 	
 end architecture DE10Nano_arch;
